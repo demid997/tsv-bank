@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТСВ Банк</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+</head>
+<body>
+    <header>
+        <h1>ТСВ Банк</h1>
+    </header>
+
+    <!-- Форма входа -->
+    <div id="loginForm">
+        <h2>Вход</h2>
+        <form id="login">
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="password" id="password" placeholder="Пароль" required />
+            <button type="submit">Войти</button>
+        </form>
+        <p>Нет аккаунта? <a href="#" id="signupLink">Зарегистрироваться</a></p>
+    </div>
+
+    <!-- Выпуск карты -->
+    <div id="cardSection" style="display: none;">
+        <h2>Выпуск тестовой карты</h2>
+        <button id="generateCardButton">Выпустить карту</button>
+        <p id="cardNumber"></p>
+        <button id="downloadCardButton" style="display:none;">Скачать</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker зарегистрирован'))
+                .catch((error) => console.log('Ошибка при регистрации Service Worker:', error));
+        }
+    </script>
+</body>
+</html>
